@@ -11,14 +11,14 @@ console.log(galleryItems);
     const galleryElem = document.querySelector('.gallery__image');        
     const galleryElement = document.querySelector('.gallery');
 
-    
-galleryElem.insertAdjacentHTML('beforeend', galleryFunc(galleryItems).join(''));
 
     galleryElement.insertAdjacentHTML('beforeend', galleryFunc(galleryItems).join(''));
   
    
-    function galleryFunc(arr) {
-      return arr.map(({ preview, original, description }) => `
+    function galleryFunc(galleryItems) {
+      return galleryItems
+      .map(({ preview, original, description }) => {
+      return `
         <li class="gallery__item">
         <a class="gallery__link" href="${original}">
           <img
@@ -28,11 +28,12 @@ galleryElem.insertAdjacentHTML('beforeend', galleryFunc(galleryItems).join(''));
             alt="${description}"
           />
         </a>
-      </li>  `);
+      </li>  
+      `});
     };
   
   
-  galleryElement.addEventListener('click', onClick);
+  
             //library lightbox
    
   const lightbox = new SimpleLightbox(".gallery a", {
