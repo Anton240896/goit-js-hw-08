@@ -20,19 +20,19 @@ function inputMessage(evt) {
 function loadMessage() {
     const form_message = JSON.parse(localStorage.getItem(FEEDBACK_KEY));
     if (form_message) {
-        emailInput.value = formState.email;
-        messageTextarea.value = formState.message;
+        emailInput.value = form_message.email;
+        messageTextarea.value = form_message.message;
     }
 }
 loadMessage();
 
 function updateForm() {
-    let form_message = localStorage.getItem('feedback-form-state');
-    if (form_message) {
+    let formData = localStorage.getItem('feedback-form-state');
+    if (formData) {
         const form_message = {
             email: emailInput.value,
             message: messageTextarea.value,
-        } = JSON.parse(savedFormData) || {};
+        } = JSON.parse(formData) || {};
       emailInput.value =  form_message.email || '';
       messageTextarea.value = form_message.message || '';
     }
