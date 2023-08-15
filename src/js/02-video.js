@@ -29,7 +29,7 @@ import throttle from 'lodash.throttle';
 const iframe = document.querySelector('iframe');
 const player = new Player(iframe);
 
-player.on('timeupdate', throttle(updateVideo, 1000));
+player.on('timeupdate', throttle(updateVideo, 500));
 function updateVideo(data) {
     localStorage.setItem('video-current-time', data.seconds)
 }
